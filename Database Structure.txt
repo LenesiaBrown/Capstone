@@ -1,0 +1,84 @@
+db.users.insertOne({
+“UserID”:123,
+“Username”:“username”,
+“Email”: “user@example.com”,
+“Password” “password”,
+“Role”: “role”
+});
+
+db.Products.insertOne({
+“ProdID”: 456,
+“UserID”: 123,
+“Name”: “Book”,
+“Description”: “A Book”,
+“Price”: 67.90,
+“Status”: “Active”,
+“Stock”: 20,
+“Category”: “Book”,
+“ItemServ”: “Item”
+});
+
+db.Ratings.insertOne({
+“RateID”: 789,
+“UserID”: 123,
+“ProdID”: 456,
+“RatingValue”: 5,
+“Review Title”: “Would buy again”,
+“ReviewDes”: “Good condition book”,
+“Review Date”: “02-02-2024”
+});
+
+db.Transactions.insertOne({
+“TransactionID” : 000001,
+“UserID” : 123,
+“ProdID” : 456,
+“Amount” : 2500.00,
+“TransactionDate”: “03-01-2024”,
+“Status” : “Received”,
+“PaymentMethod” : “Cash”
+});
+
+db.Interactions.insertOne({
+“InteractionID”: 131415,
+“UserID”: 123,
+“ProdID”: 456,
+“InteractionType”: “Click”,
+“InteractionDate”: “02-01-2024”,
+“Frequency”: 6
+});
+
+db.Carts.insertMany([
+{
+“CartID”: 10001, 
+“UserID”: 123, 
+“ProductID”: 456,
+“Quantity”: 3, 
+“Price”: 2500, 
+“TotalPrice”: 7000 
+},
+{
+“CartID”: 10001, 
+“UserID”: 123, 
+“ProductID”: 457, 
+“Quantity”: 1, 
+“Price”: 3000, 
+“TotalPrice”: 3000
+}
+]);
+
+db.Carts.aggregate([
+{
+$group: {
+_id: ”$CartID”,
+TotalCartPrice: {$sum: “TotalPrice”}
+}
+}]);
+
+db.Wishlists.insertOne({
+“ListID”: 009,
+“UserID”: 123,
+“ProductID”:456,
+“Quantity”:2
+});
+
+
